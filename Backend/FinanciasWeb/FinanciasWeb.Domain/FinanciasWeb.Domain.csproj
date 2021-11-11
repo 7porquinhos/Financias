@@ -57,6 +57,7 @@
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\Parcela.cs" />
     <Compile Include="Entities\Produto.cs" />
+    <Compile Include="Entities\UserLogin.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\Venda.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />
