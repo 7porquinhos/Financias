@@ -25,7 +25,6 @@ namespace FinanciasWeb.Controllers
             _baseRepositoryUsuario = baseRepository;
         }
 
-        [Authorize]
         [HttpGet]
         public HttpResponseMessage GetUsuarios()
         {

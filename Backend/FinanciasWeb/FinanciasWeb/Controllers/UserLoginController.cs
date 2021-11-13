@@ -30,7 +30,7 @@ namespace FinanciasWeb.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage PostLogin(Usuario usuario)
+        public HttpResponseMessage PostLogin(UserLogin usuario)
         {
             if (usuario != null)
             {
@@ -38,8 +38,8 @@ namespace FinanciasWeb.Controllers
                 {
                     List<Usuario> listaUsuarios = _baseRepositoryUsuario.Select().ToList();
                     var user = listaUsuarios.Find(
-                        x => x.Nome.ToUpper() == usuario.Nome.ToUpper() &&
-                        x.Senha.ToUpper() == usuario.Senha.ToUpper());
+                        x => x.Nome.ToUpper() == usuario.UserName.ToUpper() &&
+                        x.Senha.ToUpper() == usuario.Password.ToUpper());
                     return Request.CreateResponse(HttpStatusCode.OK, new
                     {
                         token = GenerateJWToken(user),
