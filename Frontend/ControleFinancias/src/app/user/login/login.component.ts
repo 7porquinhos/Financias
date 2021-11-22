@@ -17,7 +17,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if(localStorage.getItem('token') !== null){
-      this.router.navigate(['/dashboard']);
+      if(!this.authService.loggedIn()){
+        this.router.navigate(['/dashboard']);
+      }
+      else{
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        this.toastr.show('Acesso Expirado!');
+        this.router.navigate(['/user/login']);
+      }
+      
     }
   }
 
@@ -26,8 +35,8 @@ export class LoginComponent implements OnInit {
     .subscribe(
       () => {
         this.router.navigate(['/dashboard']);
-      },error =>{
-          this.toastr.error('Falha ao tentar Logar');
+      },err =>{
+          this.toastr.error(err.error.Message);
       }
     );
   }

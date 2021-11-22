@@ -19,13 +19,15 @@ import { LoginComponent } from './user/login/login.component';
 import { UserComponent } from './user/user.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
     UserComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+      NavComponent
    ],
   imports: [
     BrowserModule,
