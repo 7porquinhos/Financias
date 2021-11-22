@@ -37,18 +37,26 @@ namespace FinanciasWeb.Controllers
                 try
                 {
                     List<Usuario> listaUsuarios = _baseRepositoryUsuario.Select().ToList();
+
                     var user = listaUsuarios.Find(
-                        x => x.Nome.ToUpper() == usuario.UserName.ToUpper() &&
+                        x => x.Email.ToUpper() == usuario.UserName.ToUpper() &&
                         x.Senha.ToUpper() == usuario.Password.ToUpper());
-                    return Request.CreateResponse(HttpStatusCode.OK, new
+                    if (user != null)
                     {
-                        token = GenerateJWToken(user),
-                        user = user.Nome
-                    });
+                        return Request.CreateResponse(HttpStatusCode.OK, new
+                        {
+                            token = GenerateJWToken(user)
+                        });
+                    }
+                    else
+                    {
+                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Usuario ou Senha incorretos!");
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Usuario não foi incluído com sucesso");
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
                 }
 
             }

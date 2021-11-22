@@ -31,7 +31,7 @@ namespace FinanciasWeb.Controllers
             try
             {
                 List<Usuario> listaUsuarios = _baseRepositoryUsuario.Select().ToList();
-                return Request.CreateResponse<List<Usuario>>(HttpStatusCode.OK, listaUsuarios);
+                return Request.CreateResponse(HttpStatusCode.OK, listaUsuarios);
             }
             catch (Exception ex)
             {
@@ -48,6 +48,7 @@ namespace FinanciasWeb.Controllers
                 try
                 {
                     _baseRepositoryUsuario.Insert(usuario);
+
                     var response = Request.CreateResponse<Usuario>(HttpStatusCode.Created, usuario);
                     string uri = Url.Link("DefaultApi", new { id = usuario.Id });
                     response.Headers.Location = new Uri(uri);
