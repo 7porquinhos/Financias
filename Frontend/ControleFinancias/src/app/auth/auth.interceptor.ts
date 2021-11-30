@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { tap } from "rxjs/internal/operators/tap";
 import { Observable } from "rxjs";
 
-Injectable({providedIn: 'root'})
+@Injectable({providedIn: 'root'})
 export class AuthInterceptor implements HttpInterceptor{
 
   constructor(private router: Router){}

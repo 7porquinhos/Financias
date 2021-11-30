@@ -20,14 +20,18 @@ import { UserComponent } from './user/user.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavComponent } from './nav/nav.component';
+import { ConsumerApiService } from './_services/consumerApi.service';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 @NgModule({
-  declarations: [		
+  declarations: [			
     AppComponent,
     UserComponent,
     LoginComponent,
     DashboardComponent,
-      NavComponent
+    NavComponent,
+    UsuarioComponent
    ],
   imports: [
     BrowserModule,
@@ -50,7 +54,13 @@ import { NavComponent } from './nav/nav.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
