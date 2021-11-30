@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace FinanciasWeb
 {
@@ -10,12 +11,19 @@ namespace FinanciasWeb
     {
         public static void Register(HttpConfiguration config)
         {
+            /*
+            EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "GET, POST, PUT, PATCH, DELETE, OPTIONS"); 
+            config.EnableCors(cors);
+            */
+
             // Web API configuration and services
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

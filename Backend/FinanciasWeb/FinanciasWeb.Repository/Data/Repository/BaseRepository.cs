@@ -16,6 +16,7 @@ namespace FinanciasWeb.Repository.Data.Repository
         public BaseRepository(MySqlContext mySqlContext)
         {
             _mySqlContext = mySqlContext;
+            _mySqlContext.Set<TEntity>().AsNoTracking();
         }
 
         public void Insert(TEntity obj)
@@ -37,7 +38,7 @@ namespace FinanciasWeb.Repository.Data.Repository
         }
 
         public IList<TEntity> Select() =>
-            _mySqlContext.Set<TEntity>().ToList();
+            _mySqlContext.Set<TEntity>().AsNoTracking().ToList();
 
         public TEntity Select(int id) =>
             _mySqlContext.Set<TEntity>().Find(id);
