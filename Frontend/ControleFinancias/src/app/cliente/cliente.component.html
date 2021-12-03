@@ -1,0 +1,261 @@
+<div class="container">
+  <br>
+
+  <div class="row" style="margin-bottom: 0.5rem;">
+    <div class="col">
+    <button class="btn btn-outline-primary" (click)="novoCliente(template)">
+      <i class="fa fa-plus-circle"></i>&nbsp;
+      Novo Cliente
+    </button>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead class="table-warning">
+      <tr>
+        <th scope="col">NOME</th>
+        <th scope="col">TELEFONE</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">CEP</th>
+        <th scope="col">ENDEREÇO CLIENTE</th>
+        <th scope="col" colspan="2" style="text-align: center;">AÇÃO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td>
+          <b>{{cliente.Nome}}</b>
+        </td>
+        <td>
+          <b>{{cliente.Telefone}}</b>
+        </td>
+        <td>
+          <b>{{cliente.Email}}</b>
+        </td>
+        <td>
+          <b>{{cliente.CEP}}</b>
+        </td>
+        <td>
+          <b>{{cliente.EnderecoCliente}}</b>
+        </td>
+        <td>
+            <span class="icon" style="float: right;" onMouseOver="this.style.cursor='pointer'" tooltip="Editar" (click)="editarUsuario(cliente, template)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="orange" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+              </svg>
+            </span>
+        </td>
+                                                                                                                                                                                                                            
+        <td>
+          <span class="icon" onMouseOver="this.style.cursor='pointer'" tooltip="Excluir">
+            <svg xmlns="http://www.w3.org/2000/svg" (click)="abrirModalExcluir(cliente, confirm)" width="16" height="16" fill="purple" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+            </svg>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div bsModal #template="bs-modal" class="modal fade" tabindex="-1"
+  role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">
+          {{modoSalvar == "put" ? "Alterar": "Cadastrar"}} Cliente
+        </h4>
+        <button type="button" class="close pull-right" (click)="template.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form *ngIf="registerForm "[formGroup]="registerForm">
+          <div class="row">
+            <div class="form-group col-md-7">
+              <label>Nome</label>
+              <input type="text" class="form-control is-invalid"
+                [ngClass]="{'is-invalid': registerForm?.get('Nome')?.errors
+                && registerForm?.get('Nome')?.touched}"
+                formControlName="Nome" placeholder="Insira o Nome">
+              <div *ngIf="registerForm?.get('Nome')?.hasError('required')
+                && registerForm?.get('Nome')?.touched" class="invalid-feedback">
+                Nome é obrigatório.
+              </div>
+            </div>
+
+            <div class="form-group col-md-4">
+              <label>Telefone</label>
+              <input type="text" class="form-control is-invalid"
+                [ngClass]="{'is-invalid': registerForm?.get('Telefone')?.errors
+                && registerForm?.get('Telefone')?.touched}"
+                formControlName="Telefone" placeholder="Insira o Telefone">
+              <div *ngIf="registerForm?.get('Telefone')?.hasError('required')
+                && registerForm?.get('Telefone')?.touched" class="invalid-feedback">
+                Telefone é obrigatório.
+              </div>
+            </div>
+
+            <div class="form-group col-md-7">
+              <label>Email</label>
+              <input type="text" class="form-control is-invalid"
+                [ngClass]="{'is-invalid': registerForm?.get('Email')?.errors
+                && registerForm?.get('Email')?.touched}"
+                formControlName="Email" placeholder="Insira o Email">
+              <div *ngIf="registerForm?.get('Email')?.hasError('required')
+                && registerForm?.get('Email')?.touched" class="invalid-feedback">
+                Email é obrigatório.
+              </div>
+            </div>
+            <!--
+            <div class="form-group col-md-3">
+              <label>CEP</label>
+              <input type="text" class="form-control is-invalid"
+                [ngClass]="{'is-invalid': registerForm?.get('CEP')?.errors
+                && registerForm?.get('CEP')?.touched}"
+                formControlName="CEP" placeholder="Insira o CEP">
+              <div *ngIf="registerForm?.get('CEP')?.hasError('required')
+                && registerForm?.get('CEP')?.touched" class="invalid-feedback">
+                CEP é obrigatório.
+              </div>
+            </div>
+-->
+            <div class="col-md-4 mb-3">
+              <label >CEP</label>
+              <div class="input-group">
+                <div class="input-group-prepend" (click)="consultarCEP(template)">
+                  <span class="input-group-text" onMouseOver="this.style.cursor='pointer'" tooltip="Consultar CEP">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                  </span>
+                </div>
+                <input type="text" class="form-control is-invalid"
+                [ngClass]="{'is-invalid': registerForm?.get('CEP')?.errors
+                && registerForm?.get('CEP')?.touched}"
+                formControlName="CEP" placeholder="Insira o CEP">
+                <div *ngIf="registerForm?.get('CEP')?.hasError('required')
+                && registerForm?.get('CEP')?.touched" class="invalid-feedback">
+                CEP é obrigatório.
+              </div>
+              </div>
+            </div>
+            
+            <div class="form-group col-md-7">
+              <label>Endereço</label>
+              <input type="text" class="form-control is-invalid"
+                [ngClass]="{'is-invalid': registerForm?.get('EnderecoCliente')?.errors
+                && registerForm?.get('EnderecoCliente')?.touched}"
+                formControlName="EnderecoCliente" placeholder="Insira o Endereco Cliente">
+              <div *ngIf="registerForm?.get('EnderecoCliente')?.hasError('required')
+                && registerForm?.get('EnderecoCliente')?.touched" class="invalid-feedback">
+                Endereco Cliente é obrigatório.
+              </div>
+            </div>
+
+            <div class="form-group col-md-4">
+              <label>Cidade</label>
+              <input type="text" class="form-control is-invalid"
+                [ngClass]="{'is-invalid': registerForm?.get('Cidade')?.errors
+                && registerForm?.get('Cidade')?.touched}"
+                formControlName="Cidade" placeholder="Insira o Cidade">
+              <div *ngIf="registerForm?.get('Cidade')?.hasError('required')
+                && registerForm?.get('Cidade')?.touched" class="invalid-feedback">
+                Cidade é obrigatório.
+              </div>
+            </div>
+            
+          </div>
+          <fieldset class="border p-2">
+            <legend class="float-none w-auto p-2">
+              Evento          
+            </legend>
+            <div class="row">
+            <div class="col-md-3 mb-3">
+              <label >CEP do Evento</label>
+              <div class="input-group">
+                <div class="input-group-prepend" (click)="consultarCEP(template)">
+                  <span class="input-group-text" onMouseOver="this.style.cursor='pointer'" tooltip="Consultar CEP">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                  </span>
+                </div>
+                <input type="text" class="form-control is-invalid"
+                [ngClass]="{'is-invalid': registerForm?.get('EventoCEP')?.errors
+                && registerForm?.get('EventoCEP')?.touched}"
+                formControlName="EventoCEP" placeholder="Insira o CEP">
+                <div *ngIf="registerForm?.get('EventoCEP')?.hasError('required')
+                && registerForm?.get('EventoCEP')?.touched" class="invalid-feedback">
+                CEP é obrigatório.
+              </div>
+              </div>
+            </div>
+            
+            <div class="form-group col-md-5">
+              <label>Endereço do Buffet | Chacara</label>
+              <input type="text" class="form-control is-invalid"
+                [ngClass]="{'is-invalid': registerForm?.get('EnderecoEvento')?.errors
+                && registerForm?.get('EnderecoEvento')?.touched}"
+                formControlName="EnderecoEvento" placeholder="Insira o Endereco Evento">
+              <div *ngIf="registerForm?.get('EnderecoEvento')?.hasError('required')
+                && registerForm?.get('EnderecoEvento')?.touched" class="invalid-feedback">
+                Endereco Evento é obrigatório.
+              </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label>Data do Evento</label>
+              <input type="text" class="form-control" formControlName="DataEvento"
+              bsDatepicker
+              [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY hh:mm a'}"
+              [ngClass]="{'is-invalid': registerForm.get('DataEvento')?.errors
+              && registerForm.get('DataEvento')?.touched}" placeholder="Insira a Data Evento">
+              <div *ngIf="registerForm.get('DataEvento')?.hasError('required')
+              && registerForm.get('DataEvento')?.touched" class="invalid-feedback">
+              Data Evento é obrigatório.
+              </div>
+            </div>
+          </div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="modal-footer d-flex">
+        <button class="btn btn-secondary" (click)="template.hide()">
+          Fechar
+        </button>
+        <button class="btn btn-primary ml-auto" [disabled]="!registerForm?.valid" (click)="salvarCliente(template)">
+          Salvar {{modoSalvar == "put" ? "Alterações" : ""}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #confirm="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">
+          Deletando Usuario
+        </h4>
+        <button type="button" class="close pull-right" (click)="confirm.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{bodyDeletarUsuario}}</p>
+      </div>
+      <div class="modal-footer btn-group d-flex">
+        <button type="button" class="btn btn-outline-primary" (click)="confirm.hide()">
+          CENCELAR
+        </button>
+        <button type="button" class="btn btn-outline-danger" (click)="excluirCliente(confirm)">
+          DELETAR
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

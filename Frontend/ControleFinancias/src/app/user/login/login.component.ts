@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
         this.toastr.show('Acesso Expirado!');
         this.router.navigate(['/user/login']);
       }
-      
     }
   }
 
@@ -36,9 +35,8 @@ export class LoginComponent implements OnInit {
       () => {
         this.router.navigate(['/dashboard']);
       },err =>{
-          this.toastr.error(err.error.Message);
+        this.toastr.error(err.error.Message);
       }
     );
   }
-
 }

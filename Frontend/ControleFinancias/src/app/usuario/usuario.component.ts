@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Usuario } from '../_models/Usuario';
+import { AuthService } from '../_services/auth.service';
 import { ConsumerApiService } from '../_services/consumerApi.service';
 import { GlobalUrl } from '../_services/globalUrl';
 
@@ -27,7 +28,9 @@ export class UsuarioComponent implements OnInit {
   registerForm?: FormGroup;
 
   readonly apiURL = new GlobalUrl('Usuario');
-  constructor(private consumerAPI: ConsumerApiService<Usuario>,
+  constructor(
+    private authService: AuthService,
+    private consumerAPI: ConsumerApiService<Usuario>,
     private http: HttpClient,
     private fb: FormBuilder, 
     private toastr: ToastrService) 
@@ -131,7 +134,21 @@ export class UsuarioComponent implements OnInit {
         this.usuarios = response;
     },
     err => {
-        this.toastr.error("Error occured.");
+      if(!this.authService.loggedIn()){
+        switch(err.status) {
+          case 400:
+            this.toastr.error("Bad Request: Solicitação Inválida");
+          break;
+          case 401:
+            this.toastr.error('Unauthorized: Não autorizado');
+          break;
+          case 404:
+            this.toastr.error('Not Found:	Não encontrado');
+          break;
+        }
+      }
+      
+        
     });
   }
 

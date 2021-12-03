@@ -23,15 +23,17 @@ import { NavComponent } from './nav/nav.component';
 import { ConsumerApiService } from './_services/consumerApi.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { ClienteComponent } from './cliente/cliente.component';
 
 @NgModule({
-  declarations: [			
+  declarations: [				
     AppComponent,
     UserComponent,
     LoginComponent,
     DashboardComponent,
     NavComponent,
-    UsuarioComponent
+    UsuarioComponent,
+      ClienteComponent
    ],
   imports: [
     BrowserModule,
