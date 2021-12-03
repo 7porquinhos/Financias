@@ -7,13 +7,13 @@ namespace FinanciasWeb.Repository.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.2-31219")]
-    public sealed partial class initializeDB : IMigrationMetadata
+    public sealed partial class InitialDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initializeDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110291638370_initializeDB"; }
+            get { return "202112021222119_InitialDB"; }
         }
         
         string IMigrationMetadata.Source

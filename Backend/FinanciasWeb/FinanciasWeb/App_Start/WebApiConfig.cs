@@ -23,7 +23,10 @@ namespace FinanciasWeb
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-
+            //config.Routes.MapHttpRoute(
+            //     name: "ControllerOnly",
+            //     routeTemplate: "api/{controller}"
+            //);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Cliente.cs" />
+    <Compile Include="Entities\Contrato.cs" />
+    <Compile Include="Entities\EnderecoCorreios.cs" />
+    <Compile Include="Entities\Evento.cs" />
     <Compile Include="Entities\Parcela.cs" />
     <Compile Include="Entities\Produto.cs" />
     <Compile Include="Entities\UserLogin.cs" />
@@ -66,6 +69,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,6 +13,7 @@ using System.Web.Http.Cors;
 namespace FinanciasWeb.Controllers
 {
     [Authorize]
+    [RoutePrefix("api/Usuario")]
     public class UsuarioController : ApiController
     {
         private readonly IBaseRepository<Usuario> _baseRepositoryUsuario;
@@ -42,6 +43,7 @@ namespace FinanciasWeb.Controllers
         }
 
         [HttpPost]
+        //[Route("Insert-Usuario")]
         public HttpResponseMessage PostUsuario(Usuario usuario)
         {
             if (usuario != null)
@@ -55,7 +57,7 @@ namespace FinanciasWeb.Controllers
                     response.Headers.Location = new Uri(uri);
                     return response;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Usuario não foi incluído com sucesso");
                 }
@@ -112,6 +114,7 @@ namespace FinanciasWeb.Controllers
         }
 
         [HttpDelete]
+        //[ActionName("Excluir-Usuario")]
         public HttpResponseMessage DeleteUsuario(int id)
         {
             try

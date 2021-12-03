@@ -21,6 +21,7 @@ namespace FinanciasWeb.Repository.Data.Context
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Evento> Eventos { get; set; }
         public DbSet<Venda> Vendas { get; set; }
         public DbSet<Parcela> Parcelas { get; set; }
 
@@ -32,6 +33,8 @@ namespace FinanciasWeb.Repository.Data.Context
 
             modelBuilder.Entity<Parcela>()
                 .HasKey(parcela => new { parcela.Cliente_Id, parcela.Produto_Id, parcela.Venda_Id });
+
+            
         }
     }
 }

@@ -3,7 +3,7 @@ namespace FinanciasWeb.Repository.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initializeDB : DbMigration
+    public partial class InitialDB : DbMigration
     {
         public override void Up()
         {
@@ -20,6 +20,14 @@ namespace FinanciasWeb.Repository.Migrations
                         Cidade = c.String(unicode: false),
                         EnderecoEvento = c.String(unicode: false),
                         DataEvento = c.DateTime(nullable: false, precision: 0),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Evento",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -83,6 +91,7 @@ namespace FinanciasWeb.Repository.Migrations
                         Telefone = c.String(unicode: false),
                         Email = c.String(unicode: false),
                         Senha = c.String(unicode: false),
+                        Role = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -102,6 +111,7 @@ namespace FinanciasWeb.Repository.Migrations
             DropTable("dbo.Venda");
             DropTable("dbo.Produto");
             DropTable("dbo.Parcela");
+            DropTable("dbo.Evento");
             DropTable("dbo.Cliente");
         }
     }

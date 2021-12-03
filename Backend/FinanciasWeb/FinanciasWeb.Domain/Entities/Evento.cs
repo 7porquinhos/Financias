@@ -7,14 +7,10 @@ using System.Threading.Tasks;
 
 namespace FinanciasWeb.Domain.Entities
 {
-    public class Usuario
+    public class Evento
     {
         [Key]
         public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Telefone { get; set; }
-        public string Email { get; set; }
-        public string Senha { get; set; }
-        public string Role { get; set; }
+        
     }
 }
