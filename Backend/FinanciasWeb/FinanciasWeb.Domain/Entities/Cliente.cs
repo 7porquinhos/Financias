@@ -17,6 +17,7 @@ namespace FinanciasWeb.Domain.Entities
         public string CEP { get; set; }
         public string EnderecoCliente { get; set; }
         public string Cidade { get; set; }
+        public string EventoCEP { get; set; }
         public string EnderecoEvento { get; set; }
         public DateTime DataEvento { get; set; }
     }

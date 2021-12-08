@@ -14,5 +14,7 @@ namespace FinanciasWeb.Domain.Entities
         public string Cidade { get; set; }
         public string Bairro { get; set; }
 
+        public string KeyCEP { get; set; }
+
     }
 }

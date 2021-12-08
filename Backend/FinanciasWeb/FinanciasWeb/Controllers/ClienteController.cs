@@ -46,10 +46,10 @@ namespace FinanciasWeb.Controllers
         [Route("Consultar-CEP")]
         public HttpResponseMessage GetWSConsultaCEP(EnderecoCorreios enderecoCorreios)
         {
-            var CEP = enderecoCorreios.CEP.Replace("-", "").Trim();
             EnderecoCorreios WSEndereco = new EnderecoCorreios();
             try
             {
+                var CEP = enderecoCorreios.CEP.Replace("-", "").Trim();
                 if (!string.IsNullOrWhiteSpace(CEP))
                 {
                     using (var ws = new WSCorreios.AtendeClienteClient())
@@ -65,7 +65,7 @@ namespace FinanciasWeb.Controllers
                         }
                         catch (Exception ex)
                         {
-                            
+
                         }
                     }
                 }
@@ -134,7 +134,10 @@ namespace FinanciasWeb.Controllers
                         Email = cliente.Email != client.Email ? cliente.Email : client.Email,
                         CEP = cliente.CEP != client.CEP ? cliente.CEP : client.CEP,
                         EnderecoCliente = cliente.EnderecoCliente != client.EnderecoCliente ? cliente.EnderecoCliente : client.EnderecoCliente,
-                        Cidade = cliente.Cidade != client.Cidade ? cliente.Cidade : client.Cidade
+                        Cidade = cliente.Cidade != client.Cidade ? cliente.Cidade : client.Cidade,
+                        EventoCEP = cliente.EventoCEP != client.EventoCEP ? cliente.EventoCEP : client.EventoCEP,
+                        EnderecoEvento = cliente.EnderecoEvento != client.EnderecoEvento ? cliente.EnderecoEvento : client.EnderecoEvento,
+                        DataEvento = cliente.DataEvento != client.DataEvento ? cliente.DataEvento : client.DataEvento
                     };
 
                     _baseRepositoryCliente.Update(userPut);
