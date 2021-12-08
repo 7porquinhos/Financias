@@ -2,8 +2,9 @@ export class EnderecoCorreios {
     constructor(){}
 
     Id: number;
-    CEP: string;
+    CEP?: string;
     Endereco: string;
     Cidade: string;
     Bairro: string;
+    KeyCEP: string;
 }

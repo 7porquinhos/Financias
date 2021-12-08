@@ -19,7 +19,7 @@
 				<a dropdownToggle class="nav-link dropdown-toggle" data-toggle="dropdown" style="cursor: pointer;">Relatorio</a>
 				<div *dropdownMenu class="dropdown-menu">
 					<a class="dropdown-item" [routerLink]="['/parcela']" routerLinkActive="active">Parcela</a>
-					<a class="dropdown-item" [routerLink]="['/venda']" routerLinkActive="active">Venda</a>
+					<a class="dropdown-item" [routerLink]="['/vendas']" routerLinkActive="active">Vendas</a>
 				</div>
 			</div>
 			<div class="nav-item dropdown" dropdown>
@@ -34,7 +34,12 @@
 			<a class="nav-item nav-link messages" routerLinkActive="active"><i class="fa fa-envelope-o"></i><span class="badge">10</span></a>
 			<div class="nav-item dropdown" dropdown>
 				<a dropdownToggle data-toggle="dropdown" class="nav-link dropdown-toggle user-action">
-					<img src="http://cdn.onlinewebfonts.com/svg/img_311846.png" class="avatar" alt="Avatar">
+					<span class="icon"  onMouseOver="this.style.cursor='pointer'" tooltip="Avatar">
+						<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="black" class="bi bi-person-circle" viewBox="0 0 16 16">
+							<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+							<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+						  </svg>
+					</span>
 					 {{userName()}} 
 					 <b class="caret"></b>
 				</a>

@@ -22,7 +22,7 @@ export class ClienteComponent implements OnInit {
 
   clientes?: Cliente[];
   cliente?: Cliente;
-  enderecoCorreios?: EnderecoCorreios;
+  enderecoCorreios: EnderecoCorreios;
 
 
   registerForm?: FormGroup;
@@ -88,15 +88,31 @@ export class ClienteComponent implements OnInit {
     }
   }
 
-  consultarCEP(template: any){
+  consultarCEP(template: any, key: string){
+
     this.cliente = Object.assign({}, this.registerForm?.value);
-    this.enderecoCorreios?.CEP != this.cliente?.CEP;
-    this.http.post<EnderecoCorreios>(`${ this.apiURL._baseURL }/Consultar-CEP`, this.cliente).
+    var newCEP = key == 'CEP'? this.cliente?.CEP : this.cliente?.EventoCEP;
+    const endereco: EnderecoCorreios = {
+      CEP: newCEP,
+      KeyCEP: key,
+      Id: 0,
+      Endereco: '',
+      Cidade: '',
+      Bairro: ''
+    }
+    console.log(`Correios: ${endereco}`);
+    this.http.post<EnderecoCorreios>(`${ this.apiURL._baseURL }/Consultar-CEP`, endereco).
           subscribe(
           resultado => {
             this.enderecoCorreios = resultado;
-            this.cliente!.EnderecoCliente = `${ this.enderecoCorreios?.Endereco} - ${this.enderecoCorreios?.Bairro}`;
-            this.cliente!.Cidade = this.enderecoCorreios?.Cidade;
+            if(key == 'CEP'){
+              this.cliente!.EnderecoCliente = `${this.enderecoCorreios?.Endereco} - ${this.enderecoCorreios?.Bairro}`;
+              this.cliente!.Cidade = this.enderecoCorreios?.Cidade;
+            }
+            else{
+              this.cliente!.EnderecoEvento = `${this.enderecoCorreios?.Endereco} - ${this.enderecoCorreios?.Bairro}`;      
+            }
+            
             this.carregaEndereco(this.cliente!, template);
             this.toastr.success("CEP Consultado");
           },
@@ -193,7 +209,10 @@ export class ClienteComponent implements OnInit {
       Email: ['', Validators.required],
       CEP: ['', Validators.required],
       EnderecoCliente: ['', Validators.required],
-      Cidade: ['', Validators.required]
+      Cidade: ['', Validators.required],
+      EventoCEP: [''],
+      EnderecoEvento: [''],
+      DataEvento: ['']
     });
   }
 }

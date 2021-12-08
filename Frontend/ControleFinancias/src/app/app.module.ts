@@ -24,16 +24,22 @@ import { ConsumerApiService } from './_services/consumerApi.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { ClienteComponent } from './cliente/cliente.component';
+import { ProdutoComponent } from './produto/produto.component';
+import { VendaComponent } from './venda/venda.component';
+import { ParcelaComponent } from './parcela/parcela.component';
 
 @NgModule({
-  declarations: [				
+  declarations: [							
     AppComponent,
     UserComponent,
     LoginComponent,
     DashboardComponent,
     NavComponent,
     UsuarioComponent,
-      ClienteComponent
+      ClienteComponent,
+      ProdutoComponent,
+      VendaComponent,
+      ParcelaComponent
    ],
   imports: [
     BrowserModule,
