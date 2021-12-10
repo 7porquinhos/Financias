@@ -18,7 +18,9 @@ export class NavComponent implements OnInit {
   }
 
   showMenu(){
-    return this.router.url !== '/user/login';
+    var result = this.router.url !== '/user/login';
+    result = this.router.url !== '/dashboard';
+    return result;
   }
 
   loggedIn(){

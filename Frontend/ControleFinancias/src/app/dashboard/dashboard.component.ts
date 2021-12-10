@@ -10,7 +10,8 @@ import { Chart } from 'chart.js';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  @ViewChild("meuCanvas", { static: true }) elemento: ElementRef;
+  @ViewChild("CanvasVendas", { static: true }) elemento: ElementRef;
+  @ViewChild("CanvasEquipamento", { static: true }) elementoCircle: ElementRef;
   
   constructor() { }
   /*
@@ -33,15 +34,10 @@ export class DashboardComponent implements OnInit {
     new Chart(this.elemento.nativeElement, {
       type: 'line',
       data: {
-        labels: ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
+        labels: ["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021"],
         datasets: [
           {
-            data: [85,72,86,81,84,86,94,60,62,65,41,58],
-            borderColor: '#00AEFF',
-            fill: false
-          },
-          {
-            data: [33,38,10,93,68,50,35,29,34,2,62,4],
+            data: [33,38,10,93,68,50,35,29,34,2,62,120],
             borderColor: "#FFCC00",
             fill: false
           }
@@ -50,6 +46,34 @@ export class DashboardComponent implements OnInit {
       options: {
         legend: {
           display: false
+        }
+      }
+    });
+
+    new Chart(this.elementoCircle.nativeElement, {
+      type: 'doughnut',
+      data: {
+        labels: [
+          'Cabine de Fotos',
+          'Totem',
+          'Espelho',
+          'Lambe-Lambe'
+        ],
+        datasets: [
+          {
+            label: 'Equipamento + Vendido',
+            data: [10, 20, 30,40],
+            backgroundColor: [
+              'rgb(255, 99, 132)',
+              'rgb(54, 162, 235)',
+              'rgb(255, 205, 86)',
+              'rgb(147, 250, 165)'
+            ]
+          }]
+      },
+      options: {
+        legend: {
+          display: true
         }
       }
     });
