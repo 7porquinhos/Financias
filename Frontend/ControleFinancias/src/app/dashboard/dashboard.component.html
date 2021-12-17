@@ -1,89 +1,317 @@
-<div class="title-top" role="alert">
-  <h2>Dashboar</h2>
-</div>
-<div class="main-wrapper">
+
+<ul class="menu">
+    <li title="home"><a class="menu-button home" (click)="showMenuDash(0)" style="cursor: pointer;">menu</a></li>
+    
+    <li title="about"><a href="#" class="profile">Profile</a></li>
+    <li title="calendar"><a href="#" class="calendar">Calendar</a></li>
+    <li title="Logout" (click)="logout()" style="cursor: pointer;"><a class="exit">Exit</a></li>
+  </ul>
   
-
-  <!-- --NAVBAR---- -->
-<!--
-  <div class="header-container fixed-top">
-    <header class="header  navbar navbar-expand-sm expand-header">
-        <div class="header-left d-flex">
-            <div class="logo">
-                DevIngine
-            </div>
-            <a href="" class="sidebarCollapse" data-placement="bottom">
-                <span class="fas fa-bars"></span>
-            </a>
+  <ul class="menu-bar" *ngIf="showNavDash">
+      <li><a class="menu-button">Dashboard</a></li>
+      <li dropdown>
+        <a class="collapsed" dropdownToggle>
+            <i class="fas fa-plus-circle"></i>
+                Cadastro
+        </a>
+        <div class="collapse" *dropdownMenu>
+                <li routerlinkactive="active">
+                    <a [routerLink]="['/cliente']">
+                        <div class="container">
+                            <i class="fas fa-user-plus"></i>
+                            Cliente
+                        </div>
+                        
+                    </a>
+                </li>
+                <li routerlinkactive="active">
+                    <a [routerLink]="['/produto']">
+                        <div class="container">
+                            <i class="fas fa-box-open"></i>
+                            Produto
+                        </div>
+                    </a>
+                </li>
+                <li routerlinkactive="active">
+                    <a [routerLink]="['/venda']">
+                        <div class="container">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            Venda
+                        </div>
+                    </a>
+                </li>
         </div>
-        
-    </header>
-  </div>
--->
-<!-- --NAVBAR END---- -->
+      </li>
+      <li dropdown>
+        <a class="collapsed" dropdownToggle>
+            <i class="fas fa-chart-line"></i>
+                Relatorio
+        </a>
+        <div class="collapse" *dropdownMenu>
+                <li routerlinkactive="active">
+                    <a [routerLink]="['/parcela']">
+                        <div class="container">
+                            <i class="fas fa-square-root-alt"></i>
+                            Parcela
+                        </div>
+                        
+                    </a>
+                </li>
+                <li routerlinkactive="active">
+                    <a [routerLink]="['/vendas']">
+                        <div class="container">
+                            <i class="fas fa-donate"></i>
+                            Vendas
+                        </div>
+                    </a>
+                </li>
+        </div>
+      </li>
+      <li dropdown>
+        <a class="collapsed" dropdownToggle>
+            <i class="fas fa-user-cog"></i>
+                Administração
+        </a>
+        <div class="collapse" *dropdownMenu>
+                <li routerlinkactive="active">
+                    <a [routerLink]="['/usuario']">
+                        <div class="container">
+                            <i class="fas fa-user"></i>
+                            Usuario
+                        </div>        
+                    </a>
+                </li>
+        </div>
+      </li>
+  </ul>
 
-  <!-- ------------------SIDEBAR START----------- -->
-  <div class="left-menu" >
-    <div class="menubar-content">
-      <nav class="animated bounceInDown">
-        <ul id="sidebar">
-          <li class="active">
-              <a href="#"><i class="fas fa-home"></i>Dashboard</a>
-          </li>
-          <li>
-              <a href="#"><i class="fas fa-box-open"></i>Widgets</a>
-          </li>
-          <li>
-              <a href="#"><i class="fab fa-uikit"></i>UI Elements</a>
-          </li>
-          <li>
-              <a href="#"><i class="fas fa-chart-bar"></i>Advance UI</a>
-          </li>
-          <li>
-              <a href="#"><i class="fab fa-telegram-plane"></i>Form Elements</a>
-          </li>
-          <li>
-              <a href="#"><i class="fas fa-home"></i>Dashboard</a>
-          </li>
-          <li>
-              <a href="#"><i class="fas fa-home"></i>Dashboard</a>
-          </li>
-          <li>
-              <a href="#"><i class="fas fa-home"></i>Dashboard</a>
-          </li>
-          <li>
-              <a href="#"><i class="fas fa-home"></i>Dashboard</a>
-          </li>
-          <li>
-              <a href="#"><i class="fas fa-home"></i>Dashboard</a>
-          </li>
-          <li>
-              <a href="#"><i class="fas fa-home"></i>Dashboard</a>
-          </li>
-          <li>
-              <a href="#"><i class="fas fa-home"></i>Dashboard</a>
-          </li>
-          <li>
-              <a href="#"><i class="fas fa-home"></i>Dashboard</a>
-          </li>
-          <li>
-              <a href="#"><i class="fas fa-home"></i>Dashboard</a>
-          </li>
-          <li>
-              <a href="#"><i class="fas fa-home"></i>Dashboard</a>
-          </li>
-          <li>
-              <a href="#"><i class="fas fa-home"></i>Dashboard</a>
-          </li>
-        </ul>
-      </nav>
+<div class="wrapper" (click)="showMenuDash(1)">  
+    
+      <div class="main-panel ps ps--active-y"> 
+          <!-- 
+          <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent" style="border: 0px;">
+            <div class="container-fluid">
+                <div class="navbar-wrapper">
+                    <div class="navbar-toggle">
+                        <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3 collapsed" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img">
+                                <title>Menu</title>
+                                <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+          </nav>
+    -->
+        <div class="panel-header panel-header-lg">
+          <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+              <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                  <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0">
+                  </div>
+              </div>
+              <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                  <div style="position:absolute;width:200%;height:200%;left:0; top:0">
+                  </div>
+              </div>
+          </div>
+    
+          <canvas #CanvasVendas 
+          width="1340" height="255" 
+          style="display: block; width: 1340px; height: 255px;" 
+          class="chartjs-render-monitor">
+          </canvas>
+        </div>
+      <div class="main-content">
+          <div class="row" style="margin-bottom: 15px">
+              <div class="col-md-3">
+                  <div class="card-counter primary">
+                    <i class="fa fa-money"></i>
+                    <span class="count-numbers">300</span>
+                    <span class="count-name">Total de Parcelas</span>
+                  </div>
+                </div>
+    
+                <div class="col-md-3">
+                  <div class="card-counter text-white bg-warning">
+                    <i class="fa fa-money"></i>
+                    <span class="count-numbers">150</span>
+                    <span class="count-name">Parcelas á vencer</span>
+                  </div>
+                </div>
+    
+                <div class="col-md-3">
+                  <div class="card-counter danger">
+                    <i class="fa fa-money"></i>
+                    <span class="count-numbers">30</span>
+                    <span class="count-name">Parcelas Vencidas</span>
+                  </div>
+                </div>
+    
+                <div class="col-md-3">
+                  <div class="card-counter success">
+                    <i class="fa fa-money"></i>
+                    <span class="count-numbers">R$ 60.000,00</span>
+                    <span class="count-name">Valor total parcelas</span>
+                  </div>
+                </div>
+          </div>
+    
+          <div class="row">
+              <div class="col-lg-4 col-sm-6">
+                  <div class="card">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-sm-7">
+                                  <div class="numbers pull-left">
+                                      $34,657 
+                                  </div>
+                              </div>
+                              <div class="col-sm-5">
+                                  <div class="pull-right">
+                                      <span class="badge badge-pill badge-success">
+                                          +18% 
+                                      </span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card-body">
+                          <div class="chartjs-size-monitor">
+                              <div class="chartjs-size-monitor-expand">
+                                  <div>
+                                  </div>
+                              </div>
+                              <div class="chartjs-size-monitor-shrink">
+                                  <div>
+                                  </div>
+                              </div>
+                          </div>
+                          <h6 class="big-title">
+                              total earnings in last ten quarters
+                          </h6>
+                          <canvas #CanvasEquipamento
+                          height="173" width="377" 
+                          class="chartjs-render-monitor" 
+                          style="display: block; width: 377px; height: 173px;">
+                          </canvas>
+                      </div>
+                      <div class="card-footer">
+                          <hr>
+                          <div class="row">
+                              <div class="col-sm-7">
+                                  <div class="footer-title">
+                                      Financial Statistics
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+    
+              <div class="col-lg-4 col-sm-6">
+                  <div class="card">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-sm-7">
+                                  <div class="numbers pull-left">
+                                      $34,657 
+                                  </div>
+                              </div>
+                              <div class="col-sm-5">
+                                  <div class="pull-right">
+                                      <span class="badge badge-pill badge-success">
+                                          +18% 
+                                      </span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card-body">
+                          <div class="chartjs-size-monitor">
+                              <div class="chartjs-size-monitor-expand">
+                                  <div>
+                                  </div>
+                              </div>
+                              <div class="chartjs-size-monitor-shrink">
+                                  <div>
+                                  </div>
+                              </div>
+                          </div>
+                          <h6 class="big-title">
+                              total earnings in last ten quarters
+                          </h6>
+                          <canvas #CanvasEquipamentos
+                          height="173" width="377" 
+                          class="chartjs-render-monitor" 
+                          style="display: block; width: 377px; height: 173px;">
+                          </canvas>
+                      </div>
+                      <div class="card-footer">
+                          <hr>
+                          <div class="row">
+                              <div class="col-sm-7">
+                                  <div class="footer-title">
+                                      Financial Statistics
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+    
+              <div class="col-lg-4 col-sm-6">
+                  <div class="card">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-sm-7">
+                                  <div class="numbers pull-left">
+                                      $34,657 
+                                  </div>
+                              </div>
+                              <div class="col-sm-5">
+                                  <div class="pull-right">
+                                      <span class="badge badge-pill badge-success">
+                                          +18% 
+                                      </span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card-body">
+                          <div class="chartjs-size-monitor">
+                              <div class="chartjs-size-monitor-expand">
+                                  <div>
+                                  </div>
+                              </div>
+                              <div class="chartjs-size-monitor-shrink">
+                                  <div>
+                                  </div>
+                              </div>
+                          </div>
+                          <h6 class="big-title">
+                              total earnings in last ten quarters
+                          </h6>
+                          <canvas #CanvasEquipamento
+                          height="173" width="377" 
+                          class="chartjs-render-monitor" 
+                          style="display: block; width: 377px; height: 173px;">
+                          </canvas>
+                      </div>
+                      <div class="card-footer">
+                          <hr>
+                          <div class="row">
+                              <div class="col-sm-7">
+                                  <div class="footer-title">
+                                      Financial Statistics
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
     </div>
-  </div>
-  <!-- ------------------SIDEBAR END----------- -->
-</div>
-<div class="graficos">
-
-    <canvas #CanvasVendas></canvas>
-
-    <canvas #CanvasEquipamento></canvas>
-</div>
+    </div>

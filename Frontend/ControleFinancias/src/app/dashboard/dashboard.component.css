@@ -1,20 +1,113 @@
-.title-top {
-    text-align: center;
-    border-color: #61257f; 
-    background-color: black; 
-    color: #f29200;
-    margin-bottom: 0px;
-    position: fixed;
-    width: 100%;
-    height: 3rem;
+
+.wrapper {
+    position: relative;
+    top: 0;
+    height: 100vh;
 }
 
-.title-top h2{
-    margin-bottom: 0px;
+/*
+.panel-header-lg {
+    height: 380px;
 }
-.graficos {
-    margin-left: 40vh;
-    display: block;
+*/
+.panel-header {
+    /*height: 260px;*/
+    padding-top: 80px;
+    padding-bottom: 60px;
+    background: #2c2c2c;
+    background: linear-gradient(
+160deg,#2c2c2c 0,#1f1f1f 100%);
+    background-size: 105%;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.main-panel {
+    position: relative;
+    float: right;
+    width: calc(100% - 5em);
+    background-color: #f4f3ef;
+    transition: all .5s cubic-bezier(.685,.0473,.346,1);
+}
+
+.ps {
+    overflow: hidden!important;
+    overflow-anchor: none;
+    -ms-overflow-style: none;
+    touch-action: auto;
+    -ms-touch-action: auto;
+}
+
+.perfect-scrollbar-on .main-panel, .perfect-scrollbar-on .sidebar {
+    height: 100%;
+    max-height: 100%;
+}
+
+.main-panel .main-content {
+    padding: 0 30px 30px;
+    min-height: calc(100vh - 123px);
+    margin-top: -30px;
+}
+
+.navbar.navbar-transparent {
+    background-color: transparent!important;
+    box-shadow: none;
+    color: #fff;
+}
+
+.navbar.navbar-absolute {
+    position: absolute;
+    width: 100%;
+    padding-top: 10px;
+    z-index: 1029;
+}
+
+.navbar {
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    min-height: 53px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px 0 rgb(0 0 0 / 15%);
+}
+
+.navbar>.container, .navbar>.container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.container-fluid {
+    width: 25%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbar .navbar-wrapper {
+    display: inline-flex;
+    align-items: center;
+}
+
+.navbar .navbar-wrapper .navbar-toggle .navbar-toggler {
+    padding-left: 0;
+}
+
+.navbar-toggler:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.navbar .navbar-toggler {
+    width: 37px;
+    height: 27px;
+    vertical-align: middle;
+    outline: 0;
+    cursor: pointer;
 }
 
 .header-container {
@@ -248,13 +341,12 @@ a.dropdown-item a span {
 
 .left-menu {
     height: 100vh;
-    width: 240px;
+    width: 260px;
     position: fixed;
 
     box-shadow: 3px -1px 19px 1px #efeeee;
     /*overflow-y: scroll;*/
     transition: .5s;
-    margin-top: 3rem;
     background: black;
     color: #f29200;
     /*background: var(--white-color);*/
@@ -290,9 +382,10 @@ ul#sidebar li a {
     display: block;
     padding: 7px 15px;
     transition: .2s;
-    font-size: 12px;
+    text-transform: uppercase;
+    font-size: 15px;
     font-weight: 500;
-    color: #636262;
+    color: #f7f7f7;
 }
 
 ul#sidebar li a:hover {
@@ -319,5 +412,287 @@ ul#sidebar li a i {
 }
 
 
+.card-counter{
+    box-shadow: 2px 2px 10px #DADADA;
+    margin: 5px;
+    padding: 20px 10px;
+    background-color: #fff;
+    height: 100px;
+    border-radius: 5px;
+    transition: .3s linear all;
+  }
+
+  .card-counter:hover{
+    box-shadow: 4px 4px 20px #DADADA;
+    transition: .3s linear all;
+  }
+
+  .card-counter.primary{
+    background-color: #007bff;
+    color: #FFF;
+  }
+
+  .card-counter.danger{
+    background-color: #ef5350;
+    color: #FFF;
+  }  
+
+  .card-counter.success{
+    background-color: #66bb6a;
+    color: #FFF;
+  }  
+
+  .card-counter.info{
+    background-color: #26c6da;
+    color: #FFF;
+  }  
+
+  .card-counter i{
+    font-size: 5em;
+    opacity: 0.2;
+  }
+
+  .card-counter .count-numbers{
+    position: absolute;
+    right: 35px;
+    top: 20px;
+    font-size: 32px;
+    display: block;
+  }
+
+  .card-counter .count-name{
+    position: absolute;
+    right: 35px;
+    top: 65px;
+    font-style: italic;
+    text-transform: capitalize;
+    opacity: 0.5;
+    display: block;
+    font-size: 18px;
+  }
+
+  .card {
+    border-radius: 12px;
+    box-shadow: 0 6px 10px -4px rgb(0 0 0 / 15%);
+    background-color: #fff;
+    color: #252422;
+    margin-bottom: 20px;
+    position: relative;
+    border: 0;
+    transition: box-shadow .2s ease,-webkit-transform .3s cubic-bezier(.34,2,.6,1);
+    transition: transform .3s cubic-bezier(.34,2,.6,1),box-shadow .2s ease;
+    transition: transform .3s cubic-bezier(.34,2,.6,1),box-shadow .2s ease,-webkit-transform .3s cubic-bezier(.34,2,.6,1);
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+}
+
+.card .card-header:not([data-background-color]) {
+    background-color: transparent;
+}
+
+.card .card-header {
+    padding: 15px 15px 0;
+    border: 0;
+}
+.card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.card .card-body {
+    padding: 15px 15px 10px;
+}
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.chartjs-size-monitor, .chartjs-size-monitor-expand, .chartjs-size-monitor-shrink {
+    position: absolute;
+    direction: ltr;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    pointer-events: none;
+    visibility: hidden;
+    z-index: -1;
+}
+
+.card .big-title {
+    font-size: 12px;
+    text-align: center;
+    font-weight: 500;
+    padding-bottom: 15px;
+}
+
+.chartjs-render-monitor {
+    animation: chartjs-render-animation 0.001s;
+}
                             
-   
+.menu, .menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background: #2c2c2c;
+    background: linear-gradient(
+160deg,#2c2c2c 0,#1f1f1f 100%);
+    background-size: 105%;
+    overflow: hidden;
+    z-index:10;  
+    overflow:hidden;
+    /*box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);*/
+}
+.menu li a{
+  display: block;
+  text-indent: -500em;
+  height: 5em;
+  width: 5em;
+  line-height: 5em;
+  text-align:center;
+  /*color: #72739f;*/
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background 0.1s ease-in-out;
+}
+.menu li a:before {
+  font-family: FontAwesome;
+  /*speak: none;*/
+  text-indent: 0em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1.4em;
+}
+
+.menu li a.search:before {
+  content: "\f002";
+}
+.menu li a.archive:before {
+  content: "\f187";
+}
+.menu li a.pencil:before {
+  content: "\f040";
+}
+.menu li a.profile:before {
+  content: "\f007";
+}
+.menu li a.about:before {
+  content: "\f007";
+}
+.menu li a.home:before {
+  content: "\f039";
+}
+
+.menu li a.calendar:before {
+    content: "\f073";
+}
+.menu li a.exit:before {
+    content: "\f011";
+}
+
+.menu-bar li a:hover,
+.menu li a:hover,
+.menu li:first-child a {
+  background: #267fdd;
+  color: #fff;
+}
+.menu-bar{
+    overflow:hidden;
+    left:5em;
+    z-index:5;
+    width:10em;
+    height:100%;
+    transition: all 0.1s ease-in-out;
+}
+.menu-bar li a{
+  display: block;
+  height: 4em;
+  line-height: 4em;
+  text-align:center;
+  /*color: #72739f;*/
+  text-decoration:none;  
+  position: relative;
+  font-family:verdana;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background 0.1s ease-in-out;
+}
+.menu-bar li:first-child a{
+    height:5em;
+    background: #267fdd;
+    color: #fff;    
+    line-height:5
+}
+
+
+.para{
+    color:#033f72;
+    padding-left:100px;
+    font-size:3em;
+    margin-bottom:20px;
+}
+
+.open{
+    width:10em;
+    height:100%;
+}
+
+/*
+@media all and (max-width: 500px) {
+    .container{
+        margin-top:100px;
+    }
+    .menu{
+        height:5em;
+        width:100%;
+    }
+    .menu li{
+        display:inline-block;
+        float:left;
+    }
+    .menu-bar li a{
+        width:100%;
+    }
+    .menu-bar{
+        width:100%;
+        left:0;
+        height:0;
+    }
+    .open{
+        width:100%;
+        height:auto;
+    }
+    .para{
+    padding-left:5px;
+}  
+}
+@media screen and (max-height: 34em){
+  .menu li,
+  .menu-bar {
+    font-size:70%;
+  }
+}
+@media screen and (max-height: 34em) and (max-width: 500px){
+  .menu{
+        height:3.5em;
+    }
+}
+
+*/
