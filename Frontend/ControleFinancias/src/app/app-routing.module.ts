@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { CalendarioComponent } from './calendario/calendario.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ParcelaComponent } from './parcela/parcela.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
    ,{path: 'usuario', component: UsuarioComponent, canActivate: [AuthGuard]}
    ,{path: 'venda', component: VendaComponent, canActivate: [AuthGuard]}
    ,{path: 'parcela', component: ParcelaComponent, canActivate: [AuthGuard]}
+   ,{path: 'agenda', component: CalendarioComponent, canActivate: [AuthGuard]}
    ,{path: '', redirectTo: 'dashboard', pathMatch: 'full'}
    ,{path: '**', redirectTo: 'dashboard', pathMatch: 'full'}
 ];

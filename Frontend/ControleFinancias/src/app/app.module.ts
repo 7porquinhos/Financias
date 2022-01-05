@@ -27,9 +27,10 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { VendaComponent } from './venda/venda.component';
 import { ParcelaComponent } from './parcela/parcela.component';
+import { CalendarioComponent } from './calendario/calendario.component';
 
 @NgModule({
-  declarations: [							
+  declarations: [								
     AppComponent,
     UserComponent,
     LoginComponent,
@@ -39,7 +40,8 @@ import { ParcelaComponent } from './parcela/parcela.component';
       ClienteComponent,
       ProdutoComponent,
       VendaComponent,
-      ParcelaComponent
+      ParcelaComponent,
+      CalendarioComponent
    ],
   imports: [
     BrowserModule,

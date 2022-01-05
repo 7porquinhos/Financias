@@ -2,8 +2,8 @@
 <ul class="menu">
     <li title="home"><a class="menu-button home" (click)="showMenuDash(0)" style="cursor: pointer;">menu</a></li>
     
-    <li title="about"><a href="#" class="profile">Profile</a></li>
-    <li title="calendar"><a href="#" class="calendar">Calendar</a></li>
+    <li title="Perfil"><a href="#" class="profile">Profile</a></li>
+    <li title="Calendar"><a [routerLink]="['/agenda']" routerLinkActive="active" class="calendar">Calendar</a></li>
     <li title="Logout" (click)="logout()" style="cursor: pointer;"><a class="exit">Exit</a></li>
   </ul>
   
